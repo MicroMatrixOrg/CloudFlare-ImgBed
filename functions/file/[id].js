@@ -42,7 +42,7 @@ export async function onRequest(context) {  // Contents of context object
     }
     const imgRecord = await env.img_url.getWithMetadata(params.id);
     // 图片是否存在
-    if (imgRecord === null && imgRecord?.metadata === null) {
+    if (imgRecord === null || imgRecord?.metadata === null) {
         return new Response('Error: Image not found', { status: 404 });
     }
 
